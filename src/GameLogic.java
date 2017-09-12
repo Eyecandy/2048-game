@@ -4,6 +4,7 @@
 public class GameLogic {
     private Integer board[][];
     private final Integer ROW = 4;
+
     private final Integer COL = 4;
 
     public GameLogic() {
