@@ -1,5 +1,7 @@
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import static java.awt.event.KeyEvent.*;
@@ -13,6 +15,7 @@ public class KeyPress extends KeyAdapter {
     GameLogic gameLogic;
     GUI gui;
     private static Integer[] KEYS = { VK_UP, VK_DOWN, VK_LEFT, VK_RIGHT, VK_R };
+//    private boolean[] directions = new boolean[] {true, true, true, true};
 
     public KeyPress(GameLogic gameLogic,GUI gui) {
         hmap.put(VK_UP, 1);
@@ -26,11 +29,15 @@ public class KeyPress extends KeyAdapter {
 
     public void keyPressed(KeyEvent k) {
         super.keyPressed(k);
-        if (hmap.containsKey(k.getKeyCode())) {
-            gameLogic.setBoard(hmap.get(k.getKeyCode()));
-            gui.setGUI();
-
-        }
+        Integer[][] oldBoard = gameLogic.getBoard().clone();
+        if (k.getKeyCode() == 37) gameLogic.keyLeft(); // left
+        else if (k.getKeyCode() == 38) gameLogic.keyUp(); //up
+        else if (k.getKeyCode() == 39) gameLogic.keyRight(); //right
+        else if (k.getKeyCode() == 40) gameLogic.keyDown(); //down
+        Integer[][] newBoard = gameLogic.getBoard();
+        gameLogic.setFreeSpace();
+//        gameLogic.setFreeSpace();
+        gui.setGUI();
     }
 
 }

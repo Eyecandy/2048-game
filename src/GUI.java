@@ -36,10 +36,13 @@ public class GUI extends JFrame {
         for (int i = 0; i < row; i++){
             for (int j = 0; j < col; j++){
                 JLabel jLabel = new JLabel();
-                jLabel.setText(board[i][j].toString());
+                jLabel.setHorizontalAlignment(0);
+                if (board[i][j] != 0) jLabel.setText(board[i][j].toString());
+                else jLabel.setText("");
+                jLabel.setFont(new Font("Arial", Font.BOLD, 30));
                 grid[i][j] = jLabel;
                 grid[i][j].setBorder(new LineBorder(Color.BLACK));
-                //grid[i][j].setBackground(Color.black);
+//                grid[i][j].setBackground(Color.black);
                 grid[i][j].setOpaque(true);
                 panel.add(grid[i][j]);
             }
@@ -51,17 +54,19 @@ public class GUI extends JFrame {
         for (int i = 0; i < row; i++){
             for (int j = 0; j < col; j++){
                 JLabel jLabel = grid[i][j];
-                jLabel.setText(board[i][j].toString());
+                if (board[i][j] != 0) {
+                    jLabel.setText(board[i][j].toString());
+                }else{
+                    jLabel.setText("");
+                }
             }
         }
         repaint();
         revalidate();
         doLayout();
-
     }
     public static void main(String[] args) {
         GUI gui = new GUI();
-
     }
 
 
