@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9b75a720-febe-4137-8c02-29b2725c7176" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple2048/GUI.class" afterPath="$PROJECT_DIR$/out/production/Simple2048/GUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple2048/GameLogic.class" afterPath="$PROJECT_DIR$/out/production/Simple2048/GameLogic.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Simple2048/KeyPress.class" afterPath="$PROJECT_DIR$/out/production/Simple2048/KeyPress.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI.java" afterPath="$PROJECT_DIR$/src/GUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameLogic.java" afterPath="$PROJECT_DIR$/src/GameLogic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/KeyPress.java" afterPath="$PROJECT_DIR$/src/KeyPress.java" />
-    </list>
+    <list default="true" id="9b75a720-febe-4137-8c02-29b2725c7176" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -639,12 +630,12 @@
       <workItem from="1505239636404" duration="381000" />
       <workItem from="1505245729238" duration="2906000" />
       <workItem from="1505271561382" duration="523000" />
-      <workItem from="1505272668224" duration="1263000" />
+      <workItem from="1505272668224" duration="1317000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16170000" />
+    <option name="totallyTimeSpent" value="16224000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="804" extended-state="6" />
