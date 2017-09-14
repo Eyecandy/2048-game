@@ -6,7 +6,7 @@ import java.util.Random;
 /**
  * Created by joakimnilfjord on 9/12/2017 AD.
  */
-public class GameLogic extends JFrame  {
+public class GameLogic   {
     private Integer board[][];
     private final Integer ROW = 4;
     private final Integer COL = 4;

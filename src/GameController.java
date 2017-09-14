@@ -15,7 +15,6 @@ public class GameController {
         gameLogic = new GameLogic();
         gui = new GUI();
         gui.initGUI(gameLogic.getBoard());
-        gameLogic.setFocusable(true);
         KeyPress keyPress = new KeyPress(gameLogic,gui);
         gui.addKeyListener(keyPress);
     }
