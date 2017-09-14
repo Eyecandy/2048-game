@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -5,19 +6,17 @@ import java.util.Random;
 /**
  * Created by joakimnilfjord on 9/12/2017 AD.
  */
-public class GameLogic {
+public class GameLogic extends JFrame  {
     private Integer board[][];
     private final Integer ROW = 4;
-
     private final Integer COL = 4;
-
     private Random randomizer = new Random();
 
     public GameLogic() {
         initBoard();
     }
 
-    private void initBoard() {
+    public void initBoard() {
         board = new Integer[ROW][COL];
         int startOne,startTwo;
         startOne = randomizer.nextInt(16);
@@ -32,18 +31,11 @@ public class GameLogic {
         }
         board[startOne/4][startOne%4] = randomTile();
         board[startTwo/4][startTwo%4] = randomTile();
+
     }
 
     public Integer[][] getBoard() {
         return board;
-    }
-
-    public void setBoard(Integer cmd) {
-        for (int i = 0;i < ROW;i++) {
-            for (int j = 0;j < COL;j++) {
-                board[i][j] = board[i][j] + cmd;
-            }
-        }
     }
 
     public Integer[] combineDownRight(Integer[] row){
@@ -241,8 +233,7 @@ public class GameLogic {
         int[] a = new int[]{1,2,3};
         int[] b = new int[]{1,2,0};
         System.out.println(Arrays.equals(a,b));
-
     }
 
 
- }
+}
