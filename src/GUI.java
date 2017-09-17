@@ -10,39 +10,34 @@ import java.awt.event.*;
  */
 public class GUI extends JFrame {
     JPanel panel = new JPanel();
-    Integer row = 4;
-    Integer col = 4;
-    Integer board[][];
+    Integer row;
+    Integer column;
     JLabel[][] grid;
 
-
-
-    public GUI() {
-        add(panel);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 500, 500);
-        panel.setLayout(new GridLayout(4, 4));
-        GameLogic gameLogic = new GameLogic();
-        board = gameLogic.getBoard();
-        initGUI();
-        setVisible(true);
-        KeyPress keyPress = new KeyPress(gameLogic,this);
+    public GUI(int row, int column, KeyPress keyPress, GameBoard board) {
+        this.row = row;
+        this.column = column;
+        this.add(panel);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setBounds(100, 100, 500, 500);
+        panel.setLayout(new GridLayout(row, column));
+        initGUI(board);
+        this.setVisible(true);
         addKeyListener(keyPress);
-
     }
 
-    public JLabel[][] initGUI() {
-        grid = new JLabel[row][col];
+    public JLabel[][] initGUI(GameBoard board) {
+
+        grid = new JLabel[row][column];
         for (int i = 0; i < row; i++){
-            for (int j = 0; j < col; j++){
+            for (int j = 0; j < column; j++){
+                Integer boardTile = board.getBoardTile(i,j);
                 JLabel jLabel = new JLabel();
                 jLabel.setHorizontalAlignment(0);
-                if (board[i][j] != 0) jLabel.setText(board[i][j].toString());
+                if (boardTile != 0) jLabel.setText(boardTile.toString());
                 else jLabel.setText("");
-                jLabel.setFont(new Font("Arial", Font.BOLD, 30));
                 grid[i][j] = jLabel;
                 grid[i][j].setBorder(new LineBorder(Color.BLACK));
-//                grid[i][j].setBackground(Color.black);
                 grid[i][j].setOpaque(true);
                 panel.add(grid[i][j]);
             }
@@ -50,12 +45,13 @@ public class GUI extends JFrame {
         return grid;
     }
 
-    public void setGUI() {
+    public void setGUI(GameBoard board) {
         for (int i = 0; i < row; i++){
-            for (int j = 0; j < col; j++){
+            for (int j = 0; j < column; j++){
                 JLabel jLabel = grid[i][j];
-                if (board[i][j] != 0) {
-                    jLabel.setText(board[i][j].toString());
+                Integer boardTile = board.getBoardTile(i,j);
+                if (board.getBoardTile(i,j) != 0) {
+                    jLabel.setText(boardTile.toString());
                 }else{
                     jLabel.setText("");
                 }
@@ -64,9 +60,6 @@ public class GUI extends JFrame {
         repaint();
         revalidate();
         doLayout();
-    }
-    public static void main(String[] args) {
-        GUI gui = new GUI();
     }
 
 
