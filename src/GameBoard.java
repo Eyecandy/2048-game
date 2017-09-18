@@ -4,6 +4,8 @@ import java.util.Random;
 public class GameBoard {
     Integer[][] board;
     private Random randomizer = new Random();
+    private GameLogic gameLogic = new GameLogic();
+
 
     public GameBoard(int row, int column){
         board = new Integer[row][column];
@@ -96,5 +98,21 @@ public class GameBoard {
             }
         }
         return newArray;
+    }
+
+    public void moveLeft(){
+        gameLogic.keyLeft(this);
+    }
+
+    public void moveRight(){
+        gameLogic.keyRight(this);
+    }
+
+    public void moveUp(){
+        gameLogic.keyUp(this);
+    }
+
+    public void moveDown(){
+        gameLogic.keyDown(this);
     }
 }
