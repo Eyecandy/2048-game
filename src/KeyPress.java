@@ -12,22 +12,45 @@ import static java.awt.event.KeyEvent.VK_R;
  */
 public class KeyPress extends KeyAdapter {
 
-    private Initiater initiater;
-    public KeyPress(Initiater initiater){
-        this.initiater = initiater;
+    private GUI gui;
+    private GameLogic gameLogic;
+    private GameBoard board;
+
+    public KeyPress(GameLogic gameLogic, GameBoard board){
+        this.gameLogic = gameLogic;
+        this.board = board;
     }
 
     public void keyPressed(KeyEvent k) {
         super.keyPressed(k);
-//        Integer[][] oldBoard = copyArray(gameLogic.getBoard());
-//        Integer[][] newBoard = gameLogic.getBoard();
-//        if (!Arrays.deepEquals(oldBoard,newBoard)){
-//            gameLogic.setFreeSpace();
-//        }
-        if (k.getKeyCode() == 37) initiater.sendCommand("left"); // left
-        else if (k.getKeyCode() == 38) initiater.sendCommand("up"); //up
-        else if (k.getKeyCode() == 39) initiater.sendCommand("right"); //right
-        else if (k.getKeyCode() == 40) initiater.sendCommand("down"); //down
+        Integer[][] oldBoard = board.copyBoard();
+        boolean moved = false;
+        if (k.getKeyCode() == 37) {
+            gameLogic.keyLeft(board); // left
+            moved = true;
+        }
+        else if (k.getKeyCode() == 38) {
+            gameLogic.keyUp(board); //up
+            moved = true;
+        }
+        else if (k.getKeyCode() == 39) {
+            gameLogic.keyRight(board); //right
+            moved = true;
+        }
+        else if (k.getKeyCode() == 40) {
+            gameLogic.keyDown(board); //down
+            moved = true;
+        }
+
+        if (moved){
+            if (!Arrays.deepEquals(oldBoard,board.getBoard())){
+                board.setFreeSpace();
+            }
+            gui.setGUI(board);
+        }
     }
 
+    public void setGui(GUI gui) {
+        this.gui = gui;
+    }
 }
