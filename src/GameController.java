@@ -8,11 +8,11 @@ public class GameController{
         GameBoard board = new GameBoard(4,4);
         board.initBoard();
         board.printBoard();
-        Initiater initiater = new Initiater();
-        KeyPress keyPress = new KeyPress(initiater);
-        GUI gui = new GUI(4,4,keyPress, board);
-        Responder responder = new Responder(gameLogic,board,gui);
-        initiater.addListener(responder);
+        KeyPress keyPress = new KeyPress(gameLogic,board);
+        GUI gui = new GUI(4,4);
+        keyPress.setGui(gui);
+        gui.start(keyPress,board);
+
     }
 
     public static void main(String[] args) {
