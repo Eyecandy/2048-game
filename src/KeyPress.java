@@ -60,7 +60,7 @@ public class KeyPress extends KeyAdapter {
                 moves[k.getKeyCode()-37] = false;
                 isGameOver = isOver();
             }
-            printMoves();
+//            printMoves();
             gui.setGUI(board);
         }
     }

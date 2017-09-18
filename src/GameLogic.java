@@ -67,14 +67,14 @@ public class GameLogic {
     }
 
     public void keyLeft(GameBoard board){
-        for (int i = 0; i < board.getColumnWidth(); i ++){
+        for (int i = 0; i < board.getRowWidth(); i ++){
             Integer[] boardRow = board.getBoardRow(i);
             board.setBoardRow(i,combineUpLeft(boardRow));
         }
     }
 
     public void keyRight(GameBoard board){
-        for (int i = 0; i < board.getColumnWidth(); i ++){
+        for (int i = 0; i < board.getRowWidth(); i ++){
             Integer[] boardRow = board.getBoardRow(i);
             board.setBoardRow(i,combineDownRight(boardRow));
         }
