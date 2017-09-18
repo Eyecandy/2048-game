@@ -70,13 +70,14 @@ public class GameBoard {
     }
 
     public void transpose(){
-        for(int i = 0; i < getRowWidth(); i++) {
-            for(int j = i+1; j < getColumnWidth(); j++) {
-                int temp = board[i][j];
-                board[i][j] = board[j][i];
-                board[j][i] = temp;
+        Integer[][] transposedBoard = new Integer[getColumnWidth()][getRowWidth()];
+        for(int i = 0; i < getColumnWidth(); i++) {
+            for(int j = 0; j < getRowWidth(); j++) {
+                int temp = board[j][i];
+                transposedBoard[i][j] = temp;
             }
         }
+        board = transposedBoard;
     }
 
     public void printBoard(){
