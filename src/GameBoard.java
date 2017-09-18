@@ -41,14 +41,14 @@ public class GameBoard {
                 board[i][j] = 0;
             }
         }
-        board[startOne/4][startOne%4] = randomTile();
-        board[startTwo/4][startTwo%4] = randomTile();
+        board[startOne/getRowWidth()][startOne%getColumnWidth()] = randomTile();
+        board[startTwo/getRowWidth()][startTwo%getColumnWidth()] = randomTile();
     }
 
     public void setFreeSpace(){
         ArrayList<FreeSpace> freeSpaces = new ArrayList<FreeSpace>();
-        for (int i=0;i<4;i++){
-            for (int j=0;j<4;j++)
+        for (int i=0;i<getRowWidth();i++){
+            for (int j=0;j<getColumnWidth();j++)
                 if (board[i][j] == 0) freeSpaces.add(new FreeSpace(i,j));
         }
         FreeSpace randomFreeSpace = freeSpaces.get(randomizer.nextInt(freeSpaces.size()));
@@ -68,8 +68,8 @@ public class GameBoard {
     }
 
     public void transpose(){
-        for(int i = 0; i < 4; i++) {
-            for(int j = i+1; j < 4; j++) {
+        for(int i = 0; i < getRowWidth(); i++) {
+            for(int j = i+1; j < getColumnWidth(); j++) {
                 int temp = board[i][j];
                 board[i][j] = board[j][i];
                 board[j][i] = temp;

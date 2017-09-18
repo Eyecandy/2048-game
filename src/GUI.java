@@ -5,9 +5,7 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
 
-/**
- * Created by joakimnilfjord on 9/12/2017 AD.
- */
+
 public class GUI extends JFrame {
     JPanel panel = new JPanel();
     Integer row;
@@ -40,6 +38,7 @@ public class GUI extends JFrame {
                 jLabel.setHorizontalAlignment(0);
                 if (boardTile != 0) jLabel.setText(boardTile.toString());
                 else jLabel.setText("");
+                jLabel.setFont(new Font("Arial", Font.BOLD, 24));
                 jLabel.setBackground(pickColor(boardTile));
                 grid[i][j] = jLabel;
                 grid[i][j].setBorder(new LineBorder(Color.BLACK));
@@ -51,32 +50,34 @@ public class GUI extends JFrame {
     }
 
     public Color pickColor(Integer boardTile){
-        if (boardTile==0){
-            return new Color(205,193,180);
-        }else if (boardTile == 2){
-            return new Color(238,228,218);
-        }else if (boardTile == 4){
-            return new Color(237,224,200);
-        }else if (boardTile == 8){
-            return new Color(242,177,121);
-        }else if (boardTile == 16){
-            return new Color(245,149,99);
-        }else if (boardTile == 32){
-            return new Color(246,124,95);
-        }else if (boardTile == 64){
-            return new Color(246,94,59);
-        }else if (boardTile == 128){
-            return new Color(237,207,114);
-        }else if (boardTile == 256){
-            return new Color(237,204,99);
-        }else if (boardTile == 512){
-            return new Color(236,197,80);
-        }else if (boardTile == 1024){
-            return new Color(143, 205, 125);
-        }else if (boardTile == 2048){
-            return new Color(100, 205, 61);
+        switch (boardTile){
+            case 0:
+                return new Color(205,193,180);
+            case 2:
+                return new Color(238,228,218);
+            case 4:
+                return new Color(237,224,200);
+            case 8:
+                return new Color(242,177,121);
+            case 16:
+                return new Color(245,149,99);
+            case 32:
+                return new Color(246,124,95);
+            case 64:
+                return new Color(246,94,59);
+            case 128:
+                return new Color(237,207,114);
+            case 256:
+                return new Color(237,204,99);
+            case 512:
+                return new Color(236,197,80);
+            case 1024:
+                return new Color(143, 205, 125);
+            case 2048:
+                return new Color(100, 205, 61);
+            default:
+                return new Color(205,193,180);
         }
-        return new Color(205,193,180);
     }
 
     public void setGUI(GameBoard board) {

@@ -23,6 +23,11 @@ public class KeyPress extends KeyAdapter {
 
     public void keyPressed(KeyEvent k) {
         super.keyPressed(k);
+        if (k.getKeyCode() == 82){
+            board.initBoard();
+            gui.setGUI(board);
+            return;
+        }
         Integer[][] oldBoard = board.copyBoard();
         boolean moved = false;
         if (k.getKeyCode() == 37) {
