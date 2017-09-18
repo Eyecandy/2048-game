@@ -4,11 +4,10 @@
 public class GameController{
 
     public void start(){
-        GameLogic gameLogic = new GameLogic();
-        GameBoard board = new GameBoard(10,10);
+        GameBoard board = new GameBoard(4,4);
         board.initBoard();
-        KeyPress keyPress = new KeyPress(gameLogic,board);
-        GUI gui = new GUI(10,10);
+        KeyPress keyPress = new KeyPress(board);
+        GUI gui = new GUI(4,4);
         keyPress.setGui(gui);
         gui.start(keyPress,board);
 
