@@ -12,7 +12,7 @@ import static java.awt.event.KeyEvent.VK_R;
  */
 public class KeyPress extends KeyAdapter {
 
-    private GUI gui;
+//    private GUI gui;
     private GameBoard board;
     private boolean isGameOver = false;
     private boolean[] moves = new boolean[]{true,true,true,true}; // L,U,R,D
@@ -25,7 +25,7 @@ public class KeyPress extends KeyAdapter {
         super.keyPressed(k);
         if (k.getKeyCode() == 82){ // Reset
             board.initBoard();
-            gui.setGUI(board);
+//            gui.setGUI(board);
             isGameOver = false;
             return;
         }
@@ -61,13 +61,13 @@ public class KeyPress extends KeyAdapter {
                 isGameOver = isOver();
             }
 //            printMoves();
-            gui.setGUI(board);
+//            gui.setGUI(board);
         }
     }
 
-    public void setGui(GUI gui) {
-        this.gui = gui;
-    }
+//    public void setGui(GUI gui) {
+//        this.gui = gui;
+//    }
 
     public void resetMoves(){
         for(int i=0;i < 4;i++){
