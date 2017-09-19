@@ -1,11 +1,6 @@
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-
-import static java.awt.event.KeyEvent.*;
-import static java.awt.event.KeyEvent.VK_R;
 
 /**
  * Created by joakimnilfjord on 9/12/2017 AD.

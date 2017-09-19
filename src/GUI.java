@@ -1,9 +1,6 @@
-import com.sun.source.doctree.AttributeTree;
-
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.awt.event.*;
 
 
 public class GUI extends JFrame {
