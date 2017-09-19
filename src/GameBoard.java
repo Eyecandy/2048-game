@@ -1,7 +1,8 @@
 import java.util.ArrayList;
+import java.util.Observable;
 import java.util.Random;
 
-public class GameBoard {
+public class GameBoard extends Observable{
     Integer[][] board;
     private Random randomizer = new Random();
     private GameLogic gameLogic = new GameLogic();
@@ -33,10 +34,11 @@ public class GameBoard {
 
     public void initBoard() {
         int startOne,startTwo;
-        startOne = randomizer.nextInt(16);
-        startTwo = randomizer.nextInt(16);
+        int gridLocation = getRowWidth()*getColumnWidth();
+        startOne = randomizer.nextInt(gridLocation);
+        startTwo = randomizer.nextInt(gridLocation);
         while (startOne == startTwo){
-            startTwo = randomizer.nextInt(16);
+            startTwo = randomizer.nextInt(gridLocation);
         }
         for (int i = 0;i < getRowWidth();i++) {
             for (int j = 0;j < getColumnWidth();j++) {
@@ -45,6 +47,8 @@ public class GameBoard {
         }
         board[startOne/getRowWidth()][startOne%getColumnWidth()] = randomTile();
         board[startTwo/getRowWidth()][startTwo%getColumnWidth()] = randomTile();
+        setChanged();
+        notifyObservers();
     }
 
     public void setFreeSpace(){
@@ -55,6 +59,8 @@ public class GameBoard {
         }
         FreeSpace randomFreeSpace = freeSpaces.get(randomizer.nextInt(freeSpaces.size()));
         board[randomFreeSpace.getRow()][randomFreeSpace.getColumn()] = randomTile();
+        setChanged();
+        notifyObservers();
     }
 
     public void setBoardRow(int row, Integer[] rowFill){
