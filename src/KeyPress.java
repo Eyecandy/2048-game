@@ -12,22 +12,82 @@ import static java.awt.event.KeyEvent.VK_R;
  */
 public class KeyPress extends KeyAdapter {
 
-    private Initiater initiater;
-    public KeyPress(Initiater initiater){
-        this.initiater = initiater;
+//    private GUI gui;
+    private GameBoard board;
+    private boolean isGameOver = false;
+    private boolean[] moves = new boolean[]{true,true,true,true}; // L,U,R,D
+
+    public KeyPress(GameBoard board){
+        this.board = board;
     }
 
     public void keyPressed(KeyEvent k) {
         super.keyPressed(k);
-//        Integer[][] oldBoard = copyArray(gameLogic.getBoard());
-//        Integer[][] newBoard = gameLogic.getBoard();
-//        if (!Arrays.deepEquals(oldBoard,newBoard)){
-//            gameLogic.setFreeSpace();
-//        }
-        if (k.getKeyCode() == 37) initiater.sendCommand("left"); // left
-        else if (k.getKeyCode() == 38) initiater.sendCommand("up"); //up
-        else if (k.getKeyCode() == 39) initiater.sendCommand("right"); //right
-        else if (k.getKeyCode() == 40) initiater.sendCommand("down"); //down
+        if (k.getKeyCode() == 82){ // Reset
+            board.initBoard();
+//            gui.setGUI(board);
+            isGameOver = false;
+            return;
+        }
+        if (isGameOver){
+            System.out.println("Game Over");
+            return;
+        }
+        Integer[][] oldBoard = board.copyBoard();
+        boolean moved = false;
+        if (k.getKeyCode() == 37) {
+            board.moveLeft(); // left
+            moved = true;
+        }
+        else if (k.getKeyCode() == 38) {
+            board.moveUp(); //up
+            moved = true;
+        }
+        else if (k.getKeyCode() == 39) {
+            board.moveRight(); //right
+            moved = true;
+        }
+        else if (k.getKeyCode() == 40) {
+            board.moveDown(); //down
+            moved = true;
+        }
+
+        if (moved){
+            if (!Arrays.deepEquals(oldBoard,board.getBoard())){
+                board.setFreeSpace();
+                resetMoves();
+            }else{
+                moves[k.getKeyCode()-37] = false;
+                isGameOver = isOver();
+            }
+//            printMoves();
+//            gui.setGUI(board);
+        }
     }
 
+//    public void setGui(GUI gui) {
+//        this.gui = gui;
+//    }
+
+    public void resetMoves(){
+        for(int i=0;i < 4;i++){
+            moves[i] = true;
+        }
+    }
+
+    public boolean isOver(){
+        for(int i=0;i < 4;i++){
+            if (moves[i]){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void printMoves(){
+        for(boolean i : moves){
+            System.out.print(i + "|");
+        }
+        System.out.println("--------------");
+    }
 }

@@ -4,15 +4,15 @@
 public class GameController{
 
     public void start(){
-        GameLogic gameLogic = new GameLogic();
-        GameBoard board = new GameBoard(4,4);
+        GameBoard board = new GameBoard(2,2);
         board.initBoard();
-        board.printBoard();
-        Initiater initiater = new Initiater();
-        KeyPress keyPress = new KeyPress(initiater);
-        GUI gui = new GUI(4,4,keyPress, board);
-        Responder responder = new Responder(gameLogic,board,gui);
-        initiater.addListener(responder);
+        KeyPress keyPress = new KeyPress(board);
+        GUI gui = new GUI(2,2);
+        MyObserver myObserver = new MyObserver(gui,board);
+        board.addObserver(myObserver);
+//        keyPress.setGui(gui);
+        gui.start(keyPress,board);
+
     }
 
     public static void main(String[] args) {
