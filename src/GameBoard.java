@@ -32,6 +32,11 @@ public class GameBoard extends Observable{
         }
     }
 
+    void initBoard(int rows, int columns) {
+        board = new Integer[rows][columns];
+        initBoard();
+    }
+
     public void initBoard() {
         int startOne,startTwo;
         int gridLocation = getRowWidth()*getColumnWidth();
@@ -47,7 +52,7 @@ public class GameBoard extends Observable{
         }
         board[startOne/getRowWidth()][startOne%getColumnWidth()] = randomTile();
         board[startTwo/getRowWidth()][startTwo%getColumnWidth()] = randomTile();
-        setChanged();
+        //setChanged();
         notifyObservers();
     }
 

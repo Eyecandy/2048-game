@@ -3,11 +3,14 @@
  */
 public class GameController{
 
-    public void start(){
-        GameBoard board = new GameBoard(2,2);
+    private void start(){
+
+        final int INITIAL_COL = 6;
+        final int INITIAL_ROW = 6;
+        GameBoard board = new GameBoard(INITIAL_ROW, INITIAL_COL);
         board.initBoard();
         KeyPress keyPress = new KeyPress(board);
-        GUI gui = new GUI(2,2);
+        GUI gui = new GUI(INITIAL_ROW, INITIAL_COL);
         MyObserver myObserver = new MyObserver(gui,board);
         board.addObserver(myObserver);
 //        keyPress.setGui(gui);
